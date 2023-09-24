@@ -1,0 +1,101 @@
+@inherits LayoutComponentBase
+@using Financial
+@using Models.Financial
+@inject NavigationManager NavigationManager
+@inject IFinancialService financialService
+
+<div class="row-layout master-view-container">
+    <div class="column-layout group">
+        <IgbList class="list" master_view-scope>
+            <IgbListItem @onclick="@(e => Navigate(""))">
+                <IgbAvatar Src="assets/Avatar13.png" Size="SizableComponentSize.Medium" slot="start" Shape="AvatarShape.Circle" class="avatar" master_view-scope></IgbAvatar>
+                <div slot="title">Jane Doe</div>
+                <div slot="subtitle">Sales Manager</div>
+                @if (_iconVisible)
+                {
+                    <span slot="end" class="material-icons icon">
+                        keyboard_arrow_down
+                    </span>
+                }
+            </IgbListItem>
+        </IgbList>
+        <IgbTree class="tree" master_view-scope>
+            <IgbTreeItem Label="Home" @onclick="@(e => Navigate(""))"></IgbTreeItem>
+            <IgbTreeItem Label="Quỹ">
+                <IgbTreeItem Label="Thu tiền"></IgbTreeItem>
+                <IgbTreeItem Label="Thu tiền khách hàng"></IgbTreeItem>
+                <IgbTreeItem Label="Chi tiền"></IgbTreeItem>
+                <IgbTreeItem Label="Trả tiền nhà cung cấp"></IgbTreeItem>
+                <IgbTreeItem Label="Nộp bảo hiểm"></IgbTreeItem>
+                <IgbTreeItem Label="Trả lương"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Mua hàng">
+                <IgbTreeItem Label="Đơn mua hàng"></IgbTreeItem>
+                <IgbTreeItem Label="Mua hàng hóa, dịch vụ"></IgbTreeItem>
+                <IgbTreeItem Label="Trả lại hàng mua"></IgbTreeItem>
+                <IgbTreeItem Label="Công nợ"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Bán hàng">
+                <IgbTreeItem Label="Đơn đặt hàng"></IgbTreeItem>
+                <IgbTreeItem Label="Bán hàng"></IgbTreeItem>
+                <IgbTreeItem Label="Hàng bảo hành"></IgbTreeItem>
+                <IgbTreeItem Label="Công nợ"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Kho">
+                <IgbTreeItem Label="Nhập kho"></IgbTreeItem>
+                <IgbTreeItem Label="Xuất kho"></IgbTreeItem>
+                <IgbTreeItem Label="Lắp ráp, tháo rỡ"></IgbTreeItem>
+                <IgbTreeItem Label="Kiểm kho"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Công cụ, dụng cụ">
+                <IgbTreeItem Label="Ghi tăng"></IgbTreeItem>
+                <IgbTreeItem Label="Ghi giảm"></IgbTreeItem>
+                <IgbTreeItem Label="Kiểm kho"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Tài sản cố định">
+                <IgbTreeItem Label="Ghi tăng"></IgbTreeItem>
+                <IgbTreeItem Label="Ghi giảm"></IgbTreeItem>
+                <IgbTreeItem Label="Kiểm kho"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Thực phẩm">
+                <IgbTreeItem Label="Ghi tăng"></IgbTreeItem>
+                <IgbTreeItem Label="Ghi giảm"></IgbTreeItem>
+                <IgbTreeItem Label="Kiểm kho"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Tiền lương">
+                <IgbTreeItem Label="Bảng chấm công"></IgbTreeItem>
+                <IgbTreeItem Label="Tổng hợp sản phẩm"></IgbTreeItem>
+                <IgbTreeItem Label="Tính lương"></IgbTreeItem>
+                <IgbTreeItem Label="Trả lương"></IgbTreeItem>
+            </IgbTreeItem>
+        </IgbTree>
+        <IgbCategoryChart DataSource="financialBoxOfficeRevenue" ChartTitle="Doanh thu" IncludedProperties="@(new[] { "Franchise", "TotalWorldBoxOfficeRevenue", "HighestGrossingMovieInSeries" })" InitialSorts="TotalWorldBoxOfficeRevenue desc" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" master_view-scope></IgbCategoryChart>
+        <IgbCategoryChart DataSource="financialBoxOfficeRevenue" ChartTitle="Đơn hàng" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" master_view-scope></IgbCategoryChart>
+    </div>
+    <div class="view-container">
+        @Body
+    </div>
+</div>
+
+@code {
+    private bool _iconVisible = false;
+    private List<BoxOfficeRevenueType> financialBoxOfficeRevenue = new();
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        financialBoxOfficeRevenue = await financialService.GetBoxOfficeRevenue();
+
+        await base.OnInitializedAsync();
+    }
+}
