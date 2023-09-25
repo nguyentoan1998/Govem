@@ -25,6 +25,14 @@
     overflow: hidden;
     position: relative;
     padding: 16px;
+    height: 1165px;
+}
+.group_1 {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 1rem;
+    overflow: hidden;
 }
 .list {
     width: 240px;
@@ -46,9 +54,21 @@
     width: 24px;
     height: 24px;
 }
+.h6 {
+    margin: 0;
+    flex-shrink: 0;
+}
 .category-chart {
     min-width: 200px;
     min-height: 200px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.navbar {
+    color: hsla(var(--ig-gray-900));
+    background-color: hsla(var(--ig-primary-100));
+    height: max-content;
+    min-width: min-content;
     flex-grow: 1;
     flex-basis: 0;
 }
@@ -57,9 +77,26 @@
     z-index: 1;
     right: 0;
     left: 273.999998031124px;
-    top: 0;
+    top: 55px;
     position: fixed;
-    height: 1170px;
+    height: 1115px;
     min-width: 0;
     min-height: 0;
+}
+.button {
+    height: max-content;
+    flex-shrink: 0;
+}
+.dropdown {
+    left: 0;
+    top: 0;
+    position: absolute;
+    min-width: min-content;
+}
+.button::part(base) {
+    color: hsla(var(--ig-gray-900));
+    background-color: hsla(var(--ig-primary-100));
+}
+.dropdown::part(base) {
+    height: max-content;
 }

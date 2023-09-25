@@ -13,8 +13,8 @@
   <ItemGroup>
     <None Update="Shared/MainLayout.razor.css" CssScope="master_view-scope" />
     <None Update="Pages/Home.razor.css" CssScope="home-scope" />
-    <None Update="Pages/Products.razor.css" CssScope="products-scope" />
-    <None Update="Pages/Orders.razor.css" CssScope="orders-scope" />
+    <None Update="Pages/Member.razor.css" CssScope="member-scope" />
+    <None Update="Pages/Materials.razor.css" CssScope="materials-scope" />
     <None Update="Pages/Customers.razor.css" CssScope="customers-scope" />
     <None Update="Pages/Reports.razor.css" CssScope="reports-scope" />
   </ItemGroup>

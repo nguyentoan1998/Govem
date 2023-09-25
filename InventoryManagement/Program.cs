@@ -28,18 +28,20 @@ void RegisterIgniteUI(IServiceCollection services)
         typeof(IgbAvatarModule),
         typeof(IgbTreeModule),
         typeof(IgbCategoryChartModule),
-        typeof(IgbCardModule),
+        typeof(IgbNavbarModule),
         typeof(IgbButtonModule),
         typeof(IgbRippleModule),
-        typeof(IgbPieChartModule),
-        typeof(IgbSelectModule),
-        typeof(IgbComboModule),
-        typeof(IgbInputModule),
         typeof(IgbDropdownModule),
         typeof(IgbDropdownItemModule),
+        typeof(IgbCardModule),
+        typeof(IgbPieChartModule),
+        typeof(IgbInputModule),
         typeof(IgbIconButtonModule),
-        typeof(IgbCheckboxModule),
-        typeof(IgbGridModule)
+        typeof(IgbDatePickerModule),
+        typeof(IgbSelectModule),
+        typeof(IgbComboModule),
+        typeof(IgbGridModule),
+        typeof(IgbDataGridToolbarModule)
     );
 }
 

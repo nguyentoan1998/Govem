@@ -1,7 +1,7 @@
 .row-layout {
     display: flex;
 }
-.orders-container {
+.materials-container {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
@@ -95,7 +95,8 @@
     flex-shrink: 0;
 }
 .button_1::part(base) {
-    color: hsla(var(--ig-surface-500));
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
 }
 .grid {
     flex-grow: 1;

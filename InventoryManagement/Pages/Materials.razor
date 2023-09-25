@@ -1,0 +1,94 @@
+@page "/materials"
+@using Northwind
+@using Models.Northwind
+@inject INorthwindService northwindService
+
+<div class="row-layout materials-container">
+    <div class="column-layout group">
+        <div class="column-layout group_1">
+            <div class="row-layout group_2">
+                <h6 class="h6">
+                    Nguyên vật liệu
+                </h6>
+                <div class="row-layout group_3">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_1" materials-scope>
+                        <span class="material-icons">
+                            add
+                        </span>
+                        <span>Thêm mới</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" materials-scope>
+                        <span class="material-icons">
+                            picture_as_pdf
+                        </span>
+                        <span>PDF</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" materials-scope>
+                        <span class="material-icons">
+                            print
+                        </span>
+                        <span>In</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+            <div class="row-layout group_4">
+                <div class="row-layout group_5">
+                    <IgbInput Label="Search orders" Outlined="false" class="input" materials-scope>
+                        <span slot="prefix">
+                            <span class="material-icons icon">
+                                search
+                            </span>
+                        </span>
+                    </IgbInput>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" materials-scope>
+                        <span class="material-icons">
+                            filter_alt
+                        </span>
+                        <span>Filter</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+            <div class="row-layout group_6">
+                <IgbGrid Data="northwindOrders" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Multiple" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" class="ig-typography grid" materials-scope>
+                    <IgbGridToolbar>
+                        <IgbGridToolbarActions>
+                            <IgbGridToolbarExporter></IgbGridToolbarExporter>
+                            <IgbGridToolbarAdvancedFiltering></IgbGridToolbarAdvancedFiltering>
+                        </IgbGridToolbarActions>
+                        <IgbGridToolbarTitle>Grid Toolbar</IgbGridToolbarTitle>
+                    </IgbGridToolbar>
+                    <IgbColumn Field="OrderID" DataType="GridColumnDataType.Number" Header="orderID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="CustomerID" DataType="GridColumnDataType.String" Header="customerID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="OrderDate" DataType="GridColumnDataType.Date" Header="orderDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="RequiredDate" DataType="GridColumnDataType.Date" Header="requiredDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShippedDate" DataType="GridColumnDataType.Date" Header="shippedDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipVia" DataType="GridColumnDataType.Number" Header="shipVia" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Freight" DataType="GridColumnDataType.Number" Header="freight" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipName" DataType="GridColumnDataType.String" Header="shipName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Street" DataType="GridColumnDataType.String" Header="street" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.City" DataType="GridColumnDataType.String" Header="city" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Region" DataType="GridColumnDataType.String" Header="region" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.PostalCode" DataType="GridColumnDataType.String" Header="postalCode" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Country" DataType="GridColumnDataType.String" Header="country" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbPaginator>true</IgbPaginator>
+                </IgbGrid>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<OrdersType> northwindOrders = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        northwindOrders = await northwindService.GetOrders();
+
+        await base.OnInitializedAsync();
+    }
+}

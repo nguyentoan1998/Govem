@@ -1,12 +1,14 @@
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
 using InventoryManagement.Pages;
+using InventoryManagement.InventoryApp;
+using InventoryManagement.ECommerce;
 using InventoryManagement.Northwind;
 
 namespace TestInventoryManagement
 {
 	[Collection("InventoryManagement")]
-	public class TestOrders
+	public class TestMember
 	{
 		[Fact]
 		public void ViewIsCreated()
@@ -17,9 +19,18 @@ namespace TestInventoryManagement
 				typeof(IgbButtonModule),
 				typeof(IgbRippleModule),
 				typeof(IgbInputModule),
+				typeof(IgbDropdownModule),
+				typeof(IgbDropdownItemModule),
+				typeof(IgbCardModule),
+				typeof(IgbIconButtonModule),
+				typeof(IgbDatePickerModule),
+				typeof(IgbSelectModule),
+				typeof(IgbComboModule),
 				typeof(IgbGridModule));
+			ctx.Services.AddScoped<IInventoryAppService>(sp => new MockInventoryAppService());
+			ctx.Services.AddScoped<IECommerceService>(sp => new MockECommerceService());
 			ctx.Services.AddScoped<INorthwindService>(sp => new MockNorthwindService());
-			var componentUnderTest = ctx.RenderComponent<Orders>();
+			var componentUnderTest = ctx.RenderComponent<Member>();
 			Assert.NotNull(componentUnderTest);
 		}
 	}

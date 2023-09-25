@@ -17,7 +17,12 @@ namespace TestInventoryManagement
 				typeof(IgbListModule),
 				typeof(IgbAvatarModule),
 				typeof(IgbTreeModule),
-				typeof(IgbCategoryChartModule));
+				typeof(IgbCategoryChartModule),
+				typeof(IgbNavbarModule),
+				typeof(IgbButtonModule),
+				typeof(IgbRippleModule),
+				typeof(IgbDropdownModule),
+				typeof(IgbDropdownItemModule));
 			ctx.Services.AddScoped<IFinancialService>(sp => new MockFinancialService());
 			var componentUnderTest = ctx.RenderComponent<MainLayout>();
 			Assert.NotNull(componentUnderTest);
