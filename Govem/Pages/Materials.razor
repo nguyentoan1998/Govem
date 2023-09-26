@@ -1,0 +1,469 @@
+@page "/materials"
+@using Northwind
+@using Models.Northwind
+@inject INorthwindService northwindService
+
+<div class="row-layout materials-container">
+    <div class="column-layout group">
+        <div class="column-layout group_1">
+            <div class="row-layout group_2">
+                <h6 class="h6">
+                    Nguyên vật liệu
+                </h6>
+                <div class="row-layout group_3">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials!.ToggleAsync())" class="button button_3" materials-scope>
+                        <span class="material-icons">
+                            add
+                        </span>
+                        <span>Thêm mới</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials!.ToggleAsync())" class="button button_4" materials-scope>
+                        <span class="material-icons">
+                            edit_calendar
+                        </span>
+                        <span>Sửa</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials!.ToggleAsync())" class="button button_5" materials-scope>
+                        <span class="material-icons">
+                            delete
+                        </span>
+                        <span>Xóa</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" materials-scope>
+                        <span class="material-icons">
+                            picture_as_pdf
+                        </span>
+                        <span>PDF</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" materials-scope>
+                        <span class="material-icons">
+                            print
+                        </span>
+                        <span>In</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+            <div class="row-layout group_4">
+                <div class="row-layout group_5">
+                    <IgbInput Label="Search orders" Outlined="false" class="input" materials-scope>
+                        <span slot="prefix">
+                            <span class="material-icons icon">
+                                search
+                            </span>
+                        </span>
+                    </IgbInput>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" materials-scope>
+                        <span class="material-icons">
+                            filter_alt
+                        </span>
+                        <span>Filter</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+            <div class="row-layout group_6">
+                <IgbGrid Data="northwindOrders" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" class="ig-typography grid" materials-scope>
+                    <IgbGridToolbar>
+                        <IgbGridToolbarActions>
+                            <IgbGridToolbarExporter></IgbGridToolbarExporter>
+                            <IgbGridToolbarAdvancedFiltering></IgbGridToolbarAdvancedFiltering>
+                        </IgbGridToolbarActions>
+                        <IgbGridToolbarTitle>Grid Toolbar</IgbGridToolbarTitle>
+                    </IgbGridToolbar>
+                    <IgbColumn Field="OrderID" DataType="GridColumnDataType.Number" Header="orderID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="CustomerID" DataType="GridColumnDataType.String" Header="customerID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="OrderDate" DataType="GridColumnDataType.Date" Header="orderDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="RequiredDate" DataType="GridColumnDataType.Date" Header="requiredDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShippedDate" DataType="GridColumnDataType.Date" Header="shippedDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipVia" DataType="GridColumnDataType.Number" Header="shipVia" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Freight" DataType="GridColumnDataType.Number" Header="freight" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipName" DataType="GridColumnDataType.String" Header="shipName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Street" DataType="GridColumnDataType.String" Header="street" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.City" DataType="GridColumnDataType.String" Header="city" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Region" DataType="GridColumnDataType.String" Header="region" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.PostalCode" DataType="GridColumnDataType.String" Header="postalCode" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Country" DataType="GridColumnDataType.String" Header="country" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbPaginator>true</IgbPaginator>
+                </IgbGrid>
+            </div>
+        </div>
+    </div>
+    <IgbDialog KeepOpenOnEscape="true" @ref="_addMaterials">
+        <h5 slot="title">
+            Thêm mới
+        </h5>
+        <div class="row-layout group_7">
+            <div class="column-layout group_8">
+                <div class="column-layout group_9">
+                    <div class="row-layout group_10">
+                        <IgbInput Label="Mã nguyên vật liệu" Required="true" Outlined="false" class="input_1" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Tên nguyên vật liệu" Required="true" Outlined="false" class="input_2" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <div class="row-layout group_11">
+                        <IgbSelect Outlined="false" Label="Đơn vị tính" Placeholder="Đơn vị tính" class="select" materials-scope>
+                            <IgbSelectItem Value="3">
+                                Children's Clothing
+                            </IgbSelectItem>
+                        </IgbSelect>
+                        <IgbSelect Outlined="false" Label="Loại" Placeholder="Loại vật liệu" class="select_1" materials-scope>
+                            <IgbSelectItem Value="3">
+                                Children's Clothing
+                            </IgbSelectItem>
+                        </IgbSelect>
+                        <IgbInput Label="Số lượng tồn" Outlined="true" class="input_3" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <div class="row-layout group_7">
+                        <IgbSelect Outlined="true" Label="Kho" class="select_2" materials-scope>
+                            <IgbSelectItem Value="Option">
+                                Option
+                            </IgbSelectItem>
+                        </IgbSelect>
+                        <IgbInput Label="Đơn giá mua" Outlined="true" class="input_4" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Đơn giá bán" Outlined="true" class="input_4" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <span class="textarea">Textarea not yet available in Blazor</span>
+                </div>
+                <div class="row-layout group_7">
+                    <IgbTabs class="tabs" materials-scope>
+                        <IgbTab Selected="true">
+                            <p class="typography__body-1 text">
+                                Đặc tính, hình ảnh
+                            </p>
+                        </IgbTab>
+                        <IgbTabPanel class="row-layout tab-item-content" materials-scope>
+                            <div class="column-layout group_12">
+                                <div class="row-layout group_7"></div>
+                                <IgbInput Label="Kích thước" Outlined="true" class="input_5" materials-scope></IgbInput>
+                                <div class="row-layout group_7"></div>
+                                <span class="textarea_1">Textarea not yet available in Blazor</span>
+                            </div>
+                            <div class="column-layout group_13">
+                                <img class="image" />
+                                <div class="row-layout group_7"></div>
+                                <div class="row-layout group_7">
+                                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button_1 button_1_1" materials-scope>
+                                        Upload File
+                                        <IgbRipple></IgbRipple>
+                                    </IgbButton>
+                                </div>
+                            </div>
+                        </IgbTabPanel>
+                        <IgbTab>
+                            <p class="typography__body-1 text_1">
+                                Đơn vị chuyển đổi
+                            </p>
+                        </IgbTab>
+                        <IgbTabPanel class="row-layout tab-item-content" materials-scope>
+                            <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="950px" class="ig-typography grid_1" materials-scope>
+                                <IgbColumn Field="Title" DataType="GridColumnDataType.String" Header="STT" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="Đơn vị chuyển đổi" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="TitleOfCourtesy" DataType="GridColumnDataType.String" Header="T" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="BirthDate" DataType="GridColumnDataType.Date" Header="birthDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="HireDate" DataType="GridColumnDataType.Date" Header="hireDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbActionStrip>
+                                    <IgbGridPinningActions></IgbGridPinningActions>
+                                    <IgbGridEditingActions AddRow="true"></IgbGridEditingActions>
+                                </IgbActionStrip>
+                            </IgbGrid>
+                        </IgbTabPanel>
+                        <IgbTab>
+                            <p class="typography__body-1 text">
+                                Mã quy cách
+                            </p>
+                        </IgbTab>
+                        <IgbTabPanel class="row-layout tab-item-content" materials-scope>
+                            <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="950px" class="ig-typography grid_1" materials-scope>
+                                <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="FirstName" DataType="GridColumnDataType.String" Header="firstName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="Title" DataType="GridColumnDataType.String" Header="title" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="TitleOfCourtesy" DataType="GridColumnDataType.String" Header="titleOfCourtesy" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbActionStrip>
+                                    <IgbGridPinningActions></IgbGridPinningActions>
+                                    <IgbGridEditingActions AddRow="true"></IgbGridEditingActions>
+                                </IgbActionStrip>
+                            </IgbGrid>
+                        </IgbTabPanel>
+                    </IgbTabs>
+                </div>
+                <div class="row-layout group_14">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials!.ToggleAsync())" class="button button_6" materials-scope>
+                        <span class="material-icons">
+                            close
+                        </span>
+                        <span>Thoát</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_7" materials-scope>
+                        <span class="material-icons">
+                            save
+                        </span>
+                        <span>Lưu</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+        </div>
+        <div slot="footer"></div>
+    </IgbDialog>
+    <IgbDialog CloseOnOutsideClick="true" KeepOpenOnEscape="false" @ref="_editMaterials">
+        <h5 slot="title">
+            Sửa
+        </h5>
+        <div class="row-layout group_7">
+            <div class="column-layout group_8">
+                <div class="column-layout group_9">
+                    <div class="row-layout group_10">
+                        <IgbInput Label="Mã nguyên vật liệu" Disabled="true" Required="true" Outlined="false" class="input_1" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Tên nguyên vật liệu" Required="true" Outlined="false" class="input_2" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <div class="row-layout group_11">
+                        <IgbSelect Outlined="false" Label="Đơn vị tính" Placeholder="Đơn vị tính" class="select" materials-scope>
+                            <IgbSelectItem Value="3">
+                                Children's Clothing
+                            </IgbSelectItem>
+                        </IgbSelect>
+                        <IgbSelect Outlined="false" Label="Loại" Placeholder="Loại vật liệu" class="select_1" materials-scope>
+                            <IgbSelectItem Value="3">
+                                Children's Clothing
+                            </IgbSelectItem>
+                        </IgbSelect>
+                        <IgbInput Label="Số lượng tồn" Outlined="true" class="input_3" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <div class="row-layout group_7">
+                        <IgbSelect Outlined="true" Label="Kho" class="select_2" materials-scope>
+                            <IgbSelectItem Value="Option">
+                                Option
+                            </IgbSelectItem>
+                        </IgbSelect>
+                        <IgbInput Label="Đơn giá mua" Outlined="true" class="input_4" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Đơn giá bán" Outlined="true" class="input_4" materials-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <span class="textarea">Textarea not yet available in Blazor</span>
+                </div>
+                <div class="row-layout group_7">
+                    <IgbTabs class="tabs" materials-scope>
+                        <IgbTab Selected="true">
+                            <p class="typography__body-1 text">
+                                Đặc tính, hình ảnh
+                            </p>
+                        </IgbTab>
+                        <IgbTabPanel class="row-layout tab-item-content" materials-scope>
+                            <div class="column-layout group_12">
+                                <div class="row-layout group_7"></div>
+                                <IgbInput Label="Kích thước" Outlined="true" class="input_5" materials-scope></IgbInput>
+                                <div class="row-layout group_7"></div>
+                                <span class="textarea_1">Textarea not yet available in Blazor</span>
+                            </div>
+                            <div class="column-layout group_13">
+                                <img class="image" />
+                                <div class="row-layout group_7"></div>
+                                <div class="row-layout group_7">
+                                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button_2 button_2_1" materials-scope>
+                                        Upload File
+                                        <IgbRipple></IgbRipple>
+                                    </IgbButton>
+                                </div>
+                            </div>
+                        </IgbTabPanel>
+                        <IgbTab>
+                            <p class="typography__body-1 text_1">
+                                Đơn vị chuyển đổi
+                            </p>
+                        </IgbTab>
+                        <IgbTabPanel class="row-layout tab-item-content" materials-scope>
+                            <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="950px" class="ig-typography grid_1" materials-scope>
+                                <IgbColumn Field="Title" DataType="GridColumnDataType.String" Header="STT" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="Đơn vị chuyển đổi" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="TitleOfCourtesy" DataType="GridColumnDataType.String" Header="T" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="BirthDate" DataType="GridColumnDataType.Date" Header="birthDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="HireDate" DataType="GridColumnDataType.Date" Header="hireDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbActionStrip>
+                                    <IgbGridPinningActions></IgbGridPinningActions>
+                                    <IgbGridEditingActions AddRow="true"></IgbGridEditingActions>
+                                </IgbActionStrip>
+                            </IgbGrid>
+                        </IgbTabPanel>
+                        <IgbTab>
+                            <p class="typography__body-1 text">
+                                Mã quy cách
+                            </p>
+                        </IgbTab>
+                        <IgbTabPanel class="row-layout tab-item-content" materials-scope>
+                            <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="950px" class="ig-typography grid_1" materials-scope>
+                                <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="FirstName" DataType="GridColumnDataType.String" Header="firstName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="Title" DataType="GridColumnDataType.String" Header="title" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbColumn Field="TitleOfCourtesy" DataType="GridColumnDataType.String" Header="titleOfCourtesy" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                                <IgbActionStrip>
+                                    <IgbGridPinningActions></IgbGridPinningActions>
+                                    <IgbGridEditingActions AddRow="true"></IgbGridEditingActions>
+                                </IgbActionStrip>
+                            </IgbGrid>
+                        </IgbTabPanel>
+                    </IgbTabs>
+                </div>
+                <div class="row-layout group_14">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials!.ToggleAsync())" class="button button_8" materials-scope>
+                        <span class="material-icons">
+                            close
+                        </span>
+                        <span>Thoát</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_9" materials-scope>
+                        <span class="material-icons">
+                            save
+                        </span>
+                        <span>Lưu</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+        </div>
+        <div slot="footer"></div>
+    </IgbDialog>
+    <IgbDialog CloseOnOutsideClick="true" KeepOpenOnEscape="false" @ref="_deleteMaterials">
+        <h5 slot="title">
+            Xóa
+        </h5>
+        <p>Bạn muốn xóa nguyên vật liệu này??</p>
+        <div slot="footer">
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials!.ToggleAsync())">Cancel</IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials!.ToggleAsync())">OK</IgbButton>
+        </div>
+    </IgbDialog>
+</div>
+
+@code {
+    private List<OrdersType> northwindOrders = new();
+    private IgbDialog? _addMaterials;
+    private List<EmployeesType> northwindEmployees = new();
+    private IgbDialog? _editMaterials;
+    private IgbDialog? _deleteMaterials;
+
+    protected override async Task OnInitializedAsync()
+    {
+        northwindOrders = await northwindService.GetOrders();
+        northwindEmployees = await northwindService.GetEmployees();
+
+        await base.OnInitializedAsync();
+    }
+}
