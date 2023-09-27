@@ -1,11 +1,11 @@
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
-using Govem.Pages;
+using Govem.Pages.Login;
 
 namespace TestGovem
 {
 	[Collection("Govem")]
-	public class TestHome
+	public class TestLogins
 	{
 		[Fact]
 		public void ViewIsCreated()
@@ -13,14 +13,11 @@ namespace TestGovem
 			using var ctx = new TestContext();
 			ctx.JSInterop.Mode = JSRuntimeMode.Loose;
 			ctx.Services.AddIgniteUIBlazor(
-				typeof(IgbCardModule),
+				typeof(IgbInputModule),
+				typeof(IgbSwitchModule),
 				typeof(IgbButtonModule),
-				typeof(IgbRippleModule),
-				typeof(IgbListModule),
-				typeof(IgbAvatarModule),
-				typeof(IgbPieChartModule),
-				typeof(IgbCategoryChartModule));
-			var componentUnderTest = ctx.RenderComponent<Home>();
+				typeof(IgbRippleModule));
+			var componentUnderTest = ctx.RenderComponent<Logins>();
 			Assert.NotNull(componentUnderTest);
 		}
 	}

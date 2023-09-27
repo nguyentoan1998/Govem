@@ -39,7 +39,10 @@ void RegisterIgniteUI(IServiceCollection services)
         typeof(IgbGridModule),
         typeof(IgbDataGridToolbarModule),
         typeof(IgbTabsModule),
-        typeof(IgbActionStripModule)
+        typeof(IgbActionStripModule),
+        typeof(IgbRadioGroupModule),
+        typeof(IgbRadioModule),
+        typeof(IgbSwitchModule)
     );
 }
 

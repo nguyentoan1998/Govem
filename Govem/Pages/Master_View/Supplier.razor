@@ -1,31 +1,31 @@
-@page "/groups"
+@page "/master_view/supplier"
 @using Northwind
 @using Models.Northwind
 @inject INorthwindService northwindService
 
-<div class="row-layout groups-container">
+<div class="row-layout supplier-container">
     <div class="column-layout group">
         <div class="column-layout group_1">
             <div class="row-layout group_2">
                 <h6 class="h6">
-                    Tổ
+                    Nhà cung cấp
                 </h6>
                 <div class="row-layout group_3">
-                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials4!.ToggleAsync())" class="button button_1" groups-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials6!.ToggleAsync())" class="button button_1" supplier-scope>
                         <span class="material-icons">
                             add
                         </span>
                         <span>Thêm mới</span>
                         <IgbRipple></IgbRipple>
                     </IgbButton>
-                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials4!.ToggleAsync())" class="button button_2" groups-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials6!.ToggleAsync())" class="button button_2" supplier-scope>
                         <span class="material-icons">
                             edit_calendar
                         </span>
                         <span>Sửa</span>
                         <IgbRipple></IgbRipple>
                     </IgbButton>
-                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials4!.ToggleAsync())" class="button button_3" groups-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials6!.ToggleAsync())" class="button button_3" supplier-scope>
                         <span class="material-icons">
                             delete
                         </span>
@@ -36,14 +36,14 @@
             </div>
             <div class="row-layout group_4">
                 <div class="row-layout group_5">
-                    <IgbInput Label="Search orders" Outlined="false" class="input" groups-scope>
+                    <IgbInput Label="Search orders" Outlined="false" class="input" supplier-scope>
                         <span slot="prefix">
                             <span class="material-icons icon">
                                 search
                             </span>
                         </span>
                     </IgbInput>
-                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" groups-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" supplier-scope>
                         <span class="material-icons">
                             filter_alt
                         </span>
@@ -53,7 +53,14 @@
                 </div>
             </div>
             <div class="row-layout group_6">
-                <IgbGrid Data="northwindOrders" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" class="ig-typography grid" groups-scope>
+                <IgbGrid Data="northwindOrders" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" class="ig-typography grid" supplier-scope>
+                    <IgbGridToolbar>
+                        <IgbGridToolbarActions>
+                            <IgbGridToolbarExporter></IgbGridToolbarExporter>
+                            <IgbGridToolbarAdvancedFiltering></IgbGridToolbarAdvancedFiltering>
+                        </IgbGridToolbarActions>
+                        <IgbGridToolbarTitle>Grid Toolbar</IgbGridToolbarTitle>
+                    </IgbGridToolbar>
                     <IgbColumn Field="OrderID" DataType="GridColumnDataType.Number" Header="orderID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
                     <IgbColumn Field="CustomerID" DataType="GridColumnDataType.String" Header="customerID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
                     <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
@@ -73,15 +80,30 @@
             </div>
         </div>
     </div>
-    <IgbDialog KeepOpenOnEscape="true" @ref="_addMaterials4">
+    <IgbDialog KeepOpenOnEscape="true" @ref="_addMaterials6">
         <h5 slot="title">
-            Thêm mới
+            Thêm mới 
         </h5>
         <div class="row-layout group_7">
             <div class="column-layout group_8">
                 <div class="column-layout group_9">
-                    <div class="row-layout group_10">
-                        <IgbInput Label="Mã tổ" Required="true" Outlined="false" class="input_1" groups-scope>
+                    <div class="row-layout group_7">
+                        <IgbRadioGroup Alignment="RadioGroupAlignment.Horizontal" class="radio-group" supplier-scope>
+                            <IgbRadio Value="1" class="radio" supplier-scope>
+                                Tổ chức
+                            </IgbRadio>
+                            <IgbRadio Value="2" class="radio" supplier-scope>
+                                Cá nhân
+                            </IgbRadio>
+                        </IgbRadioGroup>
+                        <div class="column-layout group_10">
+                            <IgbSwitch class="switch" supplier-scope>
+                                Là khách hàng
+                            </IgbSwitch>
+                        </div>
+                    </div>
+                    <div class="row-layout group_11">
+                        <IgbInput Label="Mã nhà cung cấp" Required="true" Outlined="false" class="input_1" supplier-scope>
                             <span slot="prefix">
                                 <span class="material-icons icon">
                                     person
@@ -93,7 +115,7 @@
                                 </span>
                             </span>
                         </IgbInput>
-                        <IgbInput Label="Tên tổ" Required="true" Outlined="false" class="input_2" groups-scope>
+                        <IgbInput Label="Tên nhà cung cấp" Required="true" Outlined="false" class="input_2" supplier-scope>
                             <span slot="prefix">
                                 <span class="material-icons icon">
                                     person
@@ -107,16 +129,18 @@
                         </IgbInput>
                     </div>
                     <span class="textarea">Textarea not yet available in Blazor</span>
+                    <span class="textarea">Textarea not yet available in Blazor</span>
+                    <IgbInput Label="Công nợ tối đa" Outlined="true" class="input_3" supplier-scope></IgbInput>
                 </div>
-                <div class="row-layout group_11">
-                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials4!.ToggleAsync())" class="button button_4" groups-scope>
+                <div class="row-layout group_12">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials6!.ToggleAsync())" class="button button_4" supplier-scope>
                         <span class="material-icons">
                             close
                         </span>
                         <span>Thoát</span>
                         <IgbRipple></IgbRipple>
                     </IgbButton>
-                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_5" groups-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_5" supplier-scope>
                         <span class="material-icons">
                             save
                         </span>
@@ -128,15 +152,30 @@
         </div>
         <div slot="footer"></div>
     </IgbDialog>
-    <IgbDialog KeepOpenOnEscape="true" @ref="_editMaterials4">
+    <IgbDialog KeepOpenOnEscape="true" @ref="_editMaterials6">
         <h5 slot="title">
-            Sửa
+            Thêm mới 
         </h5>
         <div class="row-layout group_7">
             <div class="column-layout group_8">
                 <div class="column-layout group_9">
-                    <div class="row-layout group_10">
-                        <IgbInput Label="Mã tổ" Required="true" Outlined="false" class="input_1" groups-scope>
+                    <div class="row-layout group_7">
+                        <IgbRadioGroup Alignment="RadioGroupAlignment.Horizontal" class="radio-group" supplier-scope>
+                            <IgbRadio Value="1" class="radio" supplier-scope>
+                                Tổ chức
+                            </IgbRadio>
+                            <IgbRadio Value="2" class="radio" supplier-scope>
+                                Cá nhân
+                            </IgbRadio>
+                        </IgbRadioGroup>
+                        <div class="column-layout group_10">
+                            <IgbSwitch class="switch" supplier-scope>
+                                Là khách hàng
+                            </IgbSwitch>
+                        </div>
+                    </div>
+                    <div class="row-layout group_11">
+                        <IgbInput Label="Mã nhà cung cấp" Disabled="true" Required="true" Outlined="false" class="input_1" supplier-scope>
                             <span slot="prefix">
                                 <span class="material-icons icon">
                                     person
@@ -148,7 +187,7 @@
                                 </span>
                             </span>
                         </IgbInput>
-                        <IgbInput Label="Tên tổ" Required="true" Outlined="false" class="input_2" groups-scope>
+                        <IgbInput Label="Tên nhà cung cấp" Required="true" Outlined="false" class="input_2" supplier-scope>
                             <span slot="prefix">
                                 <span class="material-icons icon">
                                     person
@@ -162,16 +201,18 @@
                         </IgbInput>
                     </div>
                     <span class="textarea">Textarea not yet available in Blazor</span>
+                    <span class="textarea">Textarea not yet available in Blazor</span>
+                    <IgbInput Label="Công nợ tối đa" Outlined="true" class="input_3" supplier-scope></IgbInput>
                 </div>
-                <div class="row-layout group_11">
-                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials4!.ToggleAsync())" class="button button_6" groups-scope>
+                <div class="row-layout group_12">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials6!.ToggleAsync())" class="button button_6" supplier-scope>
                         <span class="material-icons">
                             close
                         </span>
                         <span>Thoát</span>
                         <IgbRipple></IgbRipple>
                     </IgbButton>
-                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_7" groups-scope>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_7" supplier-scope>
                         <span class="material-icons">
                             save
                         </span>
@@ -183,23 +224,23 @@
         </div>
         <div slot="footer"></div>
     </IgbDialog>
-    <IgbDialog CloseOnOutsideClick="true" KeepOpenOnEscape="false" @ref="_deleteMaterials4">
+    <IgbDialog CloseOnOutsideClick="true" KeepOpenOnEscape="false" @ref="_deleteMaterials6">
         <h5 slot="title">
             Xóa
         </h5>
-        <p>Bạn muốn xóa tổ này??</p>
+        <p>Bạn muốn xóa khách hàng này??</p>
         <div slot="footer">
-            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials4!.ToggleAsync())">Cancel</IgbButton>
-            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials4!.ToggleAsync())">OK</IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials6!.ToggleAsync())">Cancel</IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials6!.ToggleAsync())">OK</IgbButton>
         </div>
     </IgbDialog>
 </div>
 
 @code {
     private List<OrdersType> northwindOrders = new();
-    private IgbDialog? _addMaterials4;
-    private IgbDialog? _editMaterials4;
-    private IgbDialog? _deleteMaterials4;
+    private IgbDialog? _addMaterials6;
+    private IgbDialog? _editMaterials6;
+    private IgbDialog? _deleteMaterials6;
 
     protected override async Task OnInitializedAsync()
     {

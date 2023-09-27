@@ -1,6 +1,6 @@
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
-using Govem.Pages;
+using Govem.Pages.Master_View;
 using Govem.Northwind;
 
 namespace TestGovem

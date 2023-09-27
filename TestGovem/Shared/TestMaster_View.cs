@@ -6,7 +6,7 @@ using Govem.Financial;
 namespace TestGovem
 {
 	[Collection("Govem")]
-	public class TestMainLayout
+	public class TestMaster_View
 	{
 		[Fact]
 		public void ViewIsCreated()
@@ -24,7 +24,7 @@ namespace TestGovem
 				typeof(IgbDropdownModule),
 				typeof(IgbDropdownItemModule));
 			ctx.Services.AddScoped<IFinancialService>(sp => new MockFinancialService());
-			var componentUnderTest = ctx.RenderComponent<MainLayout>();
+			var componentUnderTest = ctx.RenderComponent<Master_View>();
 			Assert.NotNull(componentUnderTest);
 		}
 	}

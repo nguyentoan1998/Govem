@@ -1,12 +1,12 @@
 using Bunit;
 using Microsoft.Extensions.DependencyInjection;
-using Govem.Pages;
+using Govem.Pages.Master_View;
 using Govem.Northwind;
 
 namespace TestGovem
 {
 	[Collection("Govem")]
-	public class TestFinished_products
+	public class TestCustomers
 	{
 		[Fact]
 		public void ViewIsCreated()
@@ -19,11 +19,11 @@ namespace TestGovem
 				typeof(IgbInputModule),
 				typeof(IgbGridModule),
 				typeof(IgbDataGridToolbarModule),
-				typeof(IgbSelectModule),
-				typeof(IgbTabsModule),
-				typeof(IgbActionStripModule));
+				typeof(IgbRadioGroupModule),
+				typeof(IgbRadioModule),
+				typeof(IgbSwitchModule));
 			ctx.Services.AddScoped<INorthwindService>(sp => new MockNorthwindService());
-			var componentUnderTest = ctx.RenderComponent<Finished_products>();
+			var componentUnderTest = ctx.RenderComponent<Customers>();
 			Assert.NotNull(componentUnderTest);
 		}
 	}

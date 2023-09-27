@@ -1,0 +1,220 @@
+.row-layout {
+    display: flex;
+}
+.supplier-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.group {
+    background-color: hsla(var(--ig-gray-100));
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    padding: 24px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_1 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_2 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 24px;
+}
+.group_3 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+}
+.group_4 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between;
+    gap: 24px;
+    position: relative;
+}
+.group_5 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_6 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_7 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_8 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_9 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    width: 924px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_10 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    right: 100px;
+    top: 1.0000216576360887px;
+    bottom: 5.999997046685988px;
+    position: absolute;
+    width: 83.07808168472782px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_11 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    width: 921px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_12 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    align-self: flex-end;
+}
+.h6 {
+    color: hsla(var(--ig-gray-800));
+    height: max-content;
+    min-width: min-content;
+}
+.icon {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.textarea {
+    width: 922px;
+    height: max-content;
+    min-width: min-content;
+}
+.button {
+    height: max-content;
+    flex-shrink: 0;
+}
+.input {
+    height: max-content;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+.radio-group {
+    width: max-content;
+    height: max-content;
+}
+.radio {
+    padding: 8px;
+}
+.switch {
+    left: -37.79686712449597px;
+    top: 15px;
+    position: absolute;
+    width: max-content;
+    height: max-content;
+    align-self: center;
+}
+.input_1 {
+    width: 300px;
+    height: max-content;
+    min-width: min-content;
+}
+.input_2 {
+    width: 600px;
+    height: max-content;
+    min-width: min-content;
+}
+.input_3 {
+    height: max-content;
+    min-width: min-content;
+}
+.button_1::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_2::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_3::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_4::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_5::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_6::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_7::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.grid {
+    flex-grow: 1;
+    flex-basis: 0;
+}

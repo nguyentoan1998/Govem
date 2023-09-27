@@ -1,0 +1,87 @@
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.logins-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.group {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    padding: 16px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.row-layout {
+    display: flex;
+}
+.group_1 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    height: 137px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_2 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_3 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.h3 {
+    text-align: center;
+    height: max-content;
+    min-width: min-content;
+}
+.icon {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.hyperlink {
+    color: hsla(var(--ig-info-500));
+    height: max-content;
+    min-width: min-content;
+    flex-shrink: 0;
+}
+.input {
+    height: max-content;
+    min-width: min-content;
+}
+.switch {
+    width: max-content;
+    height: max-content;
+}
+.button {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    position: absolute;
+    height: max-content;
+    flex-shrink: 0;
+}
+.button::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}

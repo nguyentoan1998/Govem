@@ -1,0 +1,60 @@
+@page "/"
+@inject NavigationManager NavigationManager
+
+<div class="column-layout logins-container">
+    <div class="column-layout group">
+        <h3 class="h3">
+            Đăng nhập
+        </h3>
+        <div class="row-layout group_1"></div>
+        <IgbInput Label="Tài khoản" Outlined="true" class="input" logins-scope>
+            <span slot="prefix">
+                <span class="material-icons icon">
+                    person
+                </span>
+            </span>
+            <span slot="suffix">
+                <span class="material-icons icon">
+                    clear
+                </span>
+            </span>
+        </IgbInput>
+        <div class="row-layout group_2"></div>
+        <IgbInput DisplayType="InputType.Password" Label="Password" Outlined="true" class="input" logins-scope>
+            <span slot="prefix">
+                <span class="material-icons icon">
+                    person
+                </span>
+            </span>
+            <span slot="suffix">
+                <span class="material-icons icon">
+                    clear
+                </span>
+            </span>
+        </IgbInput>
+        <div class="row-layout group_2"></div>
+        <IgbSwitch class="switch" logins-scope>
+            Lưu
+        </IgbSwitch>
+        <div class="row-layout group_3"></div>
+        <div class="row-layout group_2">
+            <a class="typography__body-1 hyperlink">
+                Quên mật khẩu?
+            </a>
+        </div>
+        <div class="row-layout group_2">
+            <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => Navigate("master_view"))" class="button" logins-scope>
+                Đăng nhập
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}
