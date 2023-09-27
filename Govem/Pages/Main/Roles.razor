@@ -1,0 +1,217 @@
+@page "/main/roles"
+@using Northwind
+@using Models.Northwind
+@inject INorthwindService northwindService
+
+<div class="row-layout roles-container">
+    <div class="column-layout group">
+        <div class="column-layout group_1">
+            <div class="row-layout group_2">
+                <h6 class="h6">
+                    Vai trò, quyền hạn
+                </h6>
+                <div class="row-layout group_3">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials8!.ToggleAsync())" class="button button_1" roles-scope>
+                        <span class="material-icons">
+                            add
+                        </span>
+                        <span>Thêm mới</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials8!.ToggleAsync())" class="button button_2" roles-scope>
+                        <span class="material-icons">
+                            edit_calendar
+                        </span>
+                        <span>Sửa</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials8!.ToggleAsync())" class="button button_3" roles-scope>
+                        <span class="material-icons">
+                            delete
+                        </span>
+                        <span>Xóa</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+            <div class="row-layout group_4">
+                <div class="row-layout group_5">
+                    <IgbInput Label="Search orders" Outlined="false" class="input" roles-scope>
+                        <span slot="prefix">
+                            <span class="material-icons icon">
+                                search
+                            </span>
+                        </span>
+                    </IgbInput>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" roles-scope>
+                        <span class="material-icons">
+                            filter_alt
+                        </span>
+                        <span>Filter</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+            <div class="row-layout group_6">
+                <IgbGrid Data="northwindOrders" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" class="ig-typography grid" roles-scope>
+                    <IgbGridToolbar>
+                        <IgbGridToolbarActions>
+                            <IgbGridToolbarExporter></IgbGridToolbarExporter>
+                            <IgbGridToolbarAdvancedFiltering></IgbGridToolbarAdvancedFiltering>
+                        </IgbGridToolbarActions>
+                        <IgbGridToolbarTitle>Grid Toolbar</IgbGridToolbarTitle>
+                    </IgbGridToolbar>
+                    <IgbColumn Field="OrderID" DataType="GridColumnDataType.Number" Header="orderID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="CustomerID" DataType="GridColumnDataType.String" Header="customerID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="OrderDate" DataType="GridColumnDataType.Date" Header="orderDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="RequiredDate" DataType="GridColumnDataType.Date" Header="requiredDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShippedDate" DataType="GridColumnDataType.Date" Header="shippedDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipVia" DataType="GridColumnDataType.Number" Header="shipVia" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Freight" DataType="GridColumnDataType.Number" Header="freight" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipName" DataType="GridColumnDataType.String" Header="shipName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Street" DataType="GridColumnDataType.String" Header="street" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.City" DataType="GridColumnDataType.String" Header="city" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Region" DataType="GridColumnDataType.String" Header="region" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.PostalCode" DataType="GridColumnDataType.String" Header="postalCode" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Country" DataType="GridColumnDataType.String" Header="country" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbPaginator>true</IgbPaginator>
+                </IgbGrid>
+            </div>
+        </div>
+    </div>
+    <IgbDialog KeepOpenOnEscape="true" @ref="_addMaterials8">
+        <h5 slot="title">
+            Thêm mới
+        </h5>
+        <div class="row-layout group_7">
+            <div class="column-layout group_8">
+                <div class="column-layout group_9">
+                    <div class="row-layout group_10">
+                        <IgbInput Label="Mã quyền hạn" Required="true" Outlined="false" class="input_1" roles-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Tên quyền hạn" Required="true" Outlined="false" class="input_2" roles-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <span class="textarea">Textarea not yet available in Blazor</span>
+                </div>
+                <div class="row-layout group_11">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials8!.ToggleAsync())" class="button button_4" roles-scope>
+                        <span class="material-icons">
+                            close
+                        </span>
+                        <span>Thoát</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_5" roles-scope>
+                        <span class="material-icons">
+                            save
+                        </span>
+                        <span>Lưu</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+        </div>
+        <div slot="footer"></div>
+    </IgbDialog>
+    <IgbDialog CloseOnOutsideClick="true" KeepOpenOnEscape="false" @ref="_editMaterials8">
+        <h5 slot="title">
+            Sửa
+        </h5>
+        <div class="row-layout group_7">
+            <div class="column-layout group_8">
+                <div class="column-layout group_9">
+                    <div class="row-layout group_10">
+                        <IgbInput Label="Mã quyền hạn" Disabled="true" Required="true" Outlined="false" class="input_1" roles-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Tên quyền hạn" Required="true" Outlined="false" class="input_2" roles-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <span class="textarea">Textarea not yet available in Blazor</span>
+                </div>
+                <div class="row-layout group_11">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials8!.ToggleAsync())" class="button button_6" roles-scope>
+                        <span class="material-icons">
+                            close
+                        </span>
+                        <span>Thoát</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_7" roles-scope>
+                        <span class="material-icons">
+                            save
+                        </span>
+                        <span>Lưu</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+        </div>
+        <div slot="footer"></div>
+    </IgbDialog>
+    <IgbDialog CloseOnOutsideClick="true" KeepOpenOnEscape="false" @ref="_deleteMaterials8">
+        <h5 slot="title">
+            Xóa
+        </h5>
+        <p>Bạn muốn xóa quyền hạn này??</p>
+        <div slot="footer">
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials8!.ToggleAsync())">Cancel</IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials8!.ToggleAsync())">OK</IgbButton>
+        </div>
+    </IgbDialog>
+</div>
+
+@code {
+    private List<OrdersType> northwindOrders = new();
+    private IgbDialog? _addMaterials8;
+    private IgbDialog? _editMaterials8;
+    private IgbDialog? _deleteMaterials8;
+
+    protected override async Task OnInitializedAsync()
+    {
+        northwindOrders = await northwindService.GetOrders();
+
+        await base.OnInitializedAsync();
+    }
+}

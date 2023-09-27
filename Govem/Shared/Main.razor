@@ -1,0 +1,190 @@
+@inherits LayoutComponentBase
+@using Financial
+@using Models.Financial
+@inject NavigationManager NavigationManager
+@inject IFinancialService financialService
+
+<div class="row-layout main-container">
+    <div class="column-layout group">
+        <IgbList class="list" main-scope>
+            <IgbListItem @onclick="@(e => Navigate("main"))">
+                <IgbAvatar Src="assets/Avatar13.png" Size="SizableComponentSize.Medium" slot="start" Shape="AvatarShape.Circle" class="avatar" main-scope></IgbAvatar>
+                <div slot="title">Jane Doe</div>
+                <div slot="subtitle">Sales Manager</div>
+                @if (_iconVisible)
+                {
+                    <span slot="end" class="material-icons icon">
+                        keyboard_arrow_down
+                    </span>
+                }
+            </IgbListItem>
+        </IgbList>
+        <IgbTree class="tree" main-scope>
+            <IgbTreeItem Label="Home" @onclick="@(e => Navigate("main"))"></IgbTreeItem>
+            <IgbTreeItem Label="Quỹ">
+                <IgbTreeItem Label="Thu tiền" @onclick="@(e => Navigate("main/member"))"></IgbTreeItem>
+                <IgbTreeItem Label="Thu tiền khách hàng"></IgbTreeItem>
+                <IgbTreeItem Label="Chi tiền"></IgbTreeItem>
+                <IgbTreeItem Label="Trả tiền nhà cung cấp"></IgbTreeItem>
+                <IgbTreeItem Label="Nộp bảo hiểm"></IgbTreeItem>
+                <IgbTreeItem Label="Trả lương"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Mua hàng">
+                <IgbTreeItem Label="Đơn mua hàng"></IgbTreeItem>
+                <IgbTreeItem Label="Mua hàng hóa, dịch vụ"></IgbTreeItem>
+                <IgbTreeItem Label="Trả lại hàng mua"></IgbTreeItem>
+                <IgbTreeItem Label="Công nợ"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Bán hàng">
+                <IgbTreeItem Label="Đơn đặt hàng"></IgbTreeItem>
+                <IgbTreeItem Label="Bán hàng"></IgbTreeItem>
+                <IgbTreeItem Label="Hàng bảo hành"></IgbTreeItem>
+                <IgbTreeItem Label="Công nợ"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Kho">
+                <IgbTreeItem Label="Nhập kho"></IgbTreeItem>
+                <IgbTreeItem Label="Xuất kho"></IgbTreeItem>
+                <IgbTreeItem Label="Lắp ráp, tháo rỡ"></IgbTreeItem>
+                <IgbTreeItem Label="Kiểm kho"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Công cụ, dụng cụ">
+                <IgbTreeItem Label="Ghi tăng"></IgbTreeItem>
+                <IgbTreeItem Label="Ghi giảm"></IgbTreeItem>
+                <IgbTreeItem Label="Kiểm kho"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Tài sản cố định">
+                <IgbTreeItem Label="Ghi tăng"></IgbTreeItem>
+                <IgbTreeItem Label="Ghi giảm"></IgbTreeItem>
+                <IgbTreeItem Label="Kiểm kho"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Thực phẩm">
+                <IgbTreeItem Label="Ghi tăng"></IgbTreeItem>
+                <IgbTreeItem Label="Ghi giảm"></IgbTreeItem>
+                <IgbTreeItem Label="Kiểm kho"></IgbTreeItem>
+                <IgbTreeItem Label="Bóa cáo, phân tích"></IgbTreeItem>
+            </IgbTreeItem>
+            <IgbTreeItem Label="Tiền lương">
+                <IgbTreeItem Label="Bảng chấm công"></IgbTreeItem>
+                <IgbTreeItem Label="Tổng hợp sản phẩm"></IgbTreeItem>
+                <IgbTreeItem Label="Tính lương"></IgbTreeItem>
+                <IgbTreeItem Label="Trả lương"></IgbTreeItem>
+            </IgbTreeItem>
+        </IgbTree>
+        <IgbCategoryChart DataSource="financialBoxOfficeRevenue" ChartTitle="Doanh thu" IncludedProperties="@(new[] { "Franchise", "TotalWorldBoxOfficeRevenue", "HighestGrossingMovieInSeries" })" InitialSorts="TotalWorldBoxOfficeRevenue desc" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" main-scope></IgbCategoryChart>
+        <IgbCategoryChart DataSource="financialBoxOfficeRevenue" ChartTitle="Đơn hàng" ComputedPlotAreaMarginMode="ComputedPlotAreaMarginMode.Series" class="category-chart" main-scope></IgbCategoryChart>
+    </div>
+    <IgbNavbar class="navbar" main-scope>
+        <div class="row-layout group_1">
+            <h6 class="h6">
+            </h6>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropdown!.ToggleAsync(_button))" @ref="_button" class="button button_1" main-scope>
+                Tệp
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropdown1!.ToggleAsync(_button1))" @ref="_button1" class="button button_2" main-scope>
+                Danh mục
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropdown2!.ToggleAsync(_button2))" @ref="_button2" class="button button_3" main-scope>
+                Hệ thống
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+            <IgbDropdown @ref="_dropdown" class="dropdown" main-scope>
+                <IgbDropdownItem>
+                    Nhập dữ liệu
+                </IgbDropdownItem>
+                <IgbDropdownItem>
+                    Xuất dữ liệu
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => _logout!.ToggleAsync())">
+                    Đăng xuất
+                </IgbDropdownItem>
+            </IgbDropdown>
+            <IgbDropdown @ref="_dropdown1" class="dropdown" main-scope>
+                <IgbDropdownItem>
+                    Tài khoản
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/groups"))">
+                    Cơ cấu tổ chức
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/position"))">
+                    Chức vụ
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/customers"))">
+                    Khách hàng
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/supplier"))">
+                    Nhà cung cấp
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/member"))">
+                    Nhân viên
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/materials"))">
+                    Nguyên vật liệu
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/semi_finished_products"))">
+                    Bán thành phẩm
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/finished_products"))">
+                    Thành phẩm
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/warehouse"))">
+                    Kho
+                </IgbDropdownItem>
+                <IgbDropdownItem>
+                    Nhập số dư ban đầu
+                </IgbDropdownItem>
+            </IgbDropdown>
+            <IgbDropdown @ref="_dropdown2" class="dropdown" main-scope>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/roles"))">
+                    Vai trò, quyền hạn
+                </IgbDropdownItem>
+                <IgbDropdownItem @onclick="@(e => Navigate("main/users"))">
+                    Quản lý người dùng
+                </IgbDropdownItem>
+            </IgbDropdown>
+        </div>
+    </IgbNavbar>
+    <IgbDialog KeepOpenOnEscape="true" @ref="_logout">
+        <h5 slot="title">
+            Đăng xuất
+        </h5>
+        <p>Bạn thật sự muốn đăng xuất user này??</p>
+        <div slot="footer">
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _logout!.ToggleAsync())">No</IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => Navigate(""))">Yes</IgbButton>
+        </div>
+    </IgbDialog>
+    <div class="view-container">
+        @Body
+    </div>
+</div>
+
+@code {
+    private bool _iconVisible = false;
+    private List<BoxOfficeRevenueType> financialBoxOfficeRevenue = new();
+    private IgbButton? _button;
+    private IgbButton? _button1;
+    private IgbButton? _button2;
+    private IgbDropdown? _dropdown;
+    private IgbDropdown? _dropdown1;
+    private IgbDropdown? _dropdown2;
+    private IgbDialog? _logout;
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        financialBoxOfficeRevenue = await financialService.GetBoxOfficeRevenue();
+
+        await base.OnInitializedAsync();
+    }
+}

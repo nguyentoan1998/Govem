@@ -11,20 +11,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Shared/Master_View.razor.css" CssScope="master_view-scope" />
-    <None Update="Pages/Master_View/Home.razor.css" CssScope="home-scope" />
-    <None Update="Pages/Master_View/Member.razor.css" CssScope="member-scope" />
-    <None Update="Pages/Master_View/Materials.razor.css" CssScope="materials-scope" />
-    <None Update="Pages/Master_View/Customers.razor.css" CssScope="customers-scope" />
-    <None Update="Pages/Master_View/Reports.razor.css" CssScope="reports-scope" />
-    <None Update="Pages/Master_View/Semi_finished_products.razor.css" CssScope="semi_finished_products-scope" />
-    <None Update="Pages/Master_View/Finished_products.razor.css" CssScope="finished_products-scope" />
-    <None Update="Pages/Master_View/Groups.razor.css" CssScope="groups-scope" />
-    <None Update="Pages/Master_View/Position.razor.css" CssScope="position-scope" />
-    <None Update="Pages/Master_View/Supplier.razor.css" CssScope="supplier-scope" />
-    <None Update="Pages/Master_View/Warehouse.razor.css" CssScope="warehouse-scope" />
-    <None Update="Pages/Master_View/Roles.razor.css" CssScope="roles-scope" />
-    <None Update="Pages/Master_View/Users.razor.css" CssScope="users-scope" />
+    <None Update="Shared/Main.razor.css" CssScope="main-scope" />
+    <None Update="Pages/Main/Home.razor.css" CssScope="home-scope" />
+    <None Update="Pages/Main/Member.razor.css" CssScope="member-scope" />
+    <None Update="Pages/Main/Materials.razor.css" CssScope="materials-scope" />
+    <None Update="Pages/Main/Customers.razor.css" CssScope="customers-scope" />
+    <None Update="Pages/Main/Reports.razor.css" CssScope="reports-scope" />
+    <None Update="Pages/Main/Semi_finished_products.razor.css" CssScope="semi_finished_products-scope" />
+    <None Update="Pages/Main/Finished_products.razor.css" CssScope="finished_products-scope" />
+    <None Update="Pages/Main/Groups.razor.css" CssScope="groups-scope" />
+    <None Update="Pages/Main/Position.razor.css" CssScope="position-scope" />
+    <None Update="Pages/Main/Supplier.razor.css" CssScope="supplier-scope" />
+    <None Update="Pages/Main/Warehouse.razor.css" CssScope="warehouse-scope" />
+    <None Update="Pages/Main/Roles.razor.css" CssScope="roles-scope" />
+    <None Update="Pages/Main/Users.razor.css" CssScope="users-scope" />
     <None Update="Shared/Login.razor.css" CssScope="login-scope" />
     <None Update="Pages/Login/Logins.razor.css" CssScope="logins-scope" />
   </ItemGroup>

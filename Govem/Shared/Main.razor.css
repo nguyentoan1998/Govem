@@ -1,0 +1,110 @@
+.row-layout {
+    display: flex;
+}
+.main-container {
+    justify-content: flex-start;
+    align-items: baseline;
+    align-content: flex-start;
+    gap: 1px;
+    overflow: auto;
+    height: 100%;
+}
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.group {
+    background-color: hsla(var(--ig-surface-500));
+    border-color: hsla(var(--ig-gray-300));
+    border-width: 0px 1px 0px 0px;
+    border-style: solid;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 24px;
+    overflow: hidden;
+    position: relative;
+    padding: 16px;
+    height: 1165px;
+}
+.group_1 {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 1rem;
+    overflow: hidden;
+}
+.list {
+    width: 240px;
+    height: max-content;
+}
+.tree {
+    min-width: max-content;
+    min-height: max-content;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.avatar::part(base) {
+    color: hsla(var(--ig-surface-500));
+    background-color: transparent;
+}
+.icon {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.h6 {
+    margin: 0;
+    flex-shrink: 0;
+}
+.category-chart {
+    min-width: 200px;
+    min-height: 200px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.navbar {
+    color: hsla(var(--ig-gray-900));
+    background-color: hsla(var(--ig-primary-100));
+    height: max-content;
+    min-width: min-content;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.view-container {
+    overflow: auto;
+    z-index: 1;
+    right: 0;
+    left: 273.999998031124px;
+    top: 55px;
+    position: fixed;
+    height: 1115px;
+    min-width: 0;
+    min-height: 0;
+}
+.button {
+    height: max-content;
+    flex-shrink: 0;
+}
+.dropdown {
+    left: 0;
+    top: 0;
+    position: absolute;
+    min-width: min-content;
+}
+.button_1::part(base) {
+    color: hsla(var(--ig-gray-900));
+    background-color: hsla(var(--ig-primary-100));
+}
+.button_2::part(base) {
+    color: hsla(var(--ig-gray-900));
+    background-color: hsla(var(--ig-primary-100));
+}
+.button_3::part(base) {
+    color: hsla(var(--ig-gray-900));
+    background-color: hsla(var(--ig-primary-100));
+}
+.dropdown::part(base) {
+    height: max-content;
+}
