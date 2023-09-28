@@ -14,12 +14,12 @@ namespace TestGovem
 			using var ctx = new TestContext();
 			ctx.JSInterop.Mode = JSRuntimeMode.Loose;
 			ctx.Services.AddIgniteUIBlazor(
+				typeof(IgbButtonModule),
 				typeof(IgbListModule),
 				typeof(IgbAvatarModule),
 				typeof(IgbTreeModule),
 				typeof(IgbCategoryChartModule),
 				typeof(IgbNavbarModule),
-				typeof(IgbButtonModule),
 				typeof(IgbRippleModule),
 				typeof(IgbDropdownModule),
 				typeof(IgbDropdownItemModule));

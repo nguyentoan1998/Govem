@@ -1,27 +1,27 @@
-using System.Text.Json;
+using System.Net.Http.Json;
 using Govem.Models.Financial;
 
 namespace Govem.Financial
 {
     public class FinancialService: IFinancialService
     {
-        private readonly IWebHostEnvironment _env;
+        private readonly HttpClient _http;
 
-        public FinancialService(IWebHostEnvironment env)
+        public FinancialService(HttpClient http)
         {
-            _env = env;
+            _http = http;
         }
 
         public async Task<List<BoxOfficeRevenueType>> GetBoxOfficeRevenue()
         {
-            var options = new JsonSerializerOptions(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            var path = _env.WebRootPath + "/static-data/financial-box-office-revenue-type.json";
-            if (!File.Exists(path))
+            using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri("/static-data/financial-box-office-revenue-type.json", UriKind.RelativeOrAbsolute));
+            using HttpResponseMessage response = await _http.SendAsync(request).ConfigureAwait(false);
+            if (response.IsSuccessStatusCode)
             {
-                return new List<BoxOfficeRevenueType>();
+                return await response.Content.ReadFromJsonAsync<List<BoxOfficeRevenueType>>().ConfigureAwait(false);
             }
-            var data = File.ReadAllText(path);
-            return await Task.FromResult(JsonSerializer.Deserialize<List<BoxOfficeRevenueType>>(data, options));
+
+            return new List<BoxOfficeRevenueType>();
         }
     }
 }

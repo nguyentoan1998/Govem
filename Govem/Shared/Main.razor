@@ -5,6 +5,16 @@
 @inject IFinancialService financialService
 
 <div class="row-layout main-container">
+    <IgbDialog KeepOpenOnEscape="true" @ref="_logout">
+        <h5 slot="title">
+            Đăng xuất
+        </h5>
+        <p>Bạn thật sự muốn đăng xuất user này??</p>
+        <div slot="footer">
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _logout!.ToggleAsync())">No</IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large">Yes</IgbButton>
+        </div>
+    </IgbDialog>
     <div class="column-layout group">
         <IgbList class="list" main-scope>
             <IgbListItem @onclick="@(e => Navigate("main"))">
@@ -72,11 +82,11 @@
                 <IgbTreeItem Label="Bảng chấm công" @onclick="@(e => Navigate("main/timesheets"))"></IgbTreeItem>
                 <IgbTreeItem Label="Tổng hợp sản phẩm"></IgbTreeItem>
                 <IgbTreeItem Label="Tổng hợp sản phẩm theo người">
-                    <IgbTreeItem Label="Khoan cắt" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
-                    <IgbTreeItem Label="Đột dập" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
-                    <IgbTreeItem Label="Hàn" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
-                    <IgbTreeItem Label="Đánh bóng" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
-                    <IgbTreeItem Label="Lắp ráp" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
+                    <IgbTreeItem Label="Khoan cắt"></IgbTreeItem>
+                    <IgbTreeItem Label="Đột dập"></IgbTreeItem>
+                    <IgbTreeItem Label="Hàn"></IgbTreeItem>
+                    <IgbTreeItem Label="Đánh bóng"></IgbTreeItem>
+                    <IgbTreeItem Label="Lắp ráp"></IgbTreeItem>
                 </IgbTreeItem>
                 <IgbTreeItem Label="Tính lương"></IgbTreeItem>
                 <IgbTreeItem Label="Trả lương"></IgbTreeItem>
@@ -157,22 +167,13 @@
             </IgbDropdown>
         </div>
     </IgbNavbar>
-    <IgbDialog KeepOpenOnEscape="true" @ref="_logout">
-        <h5 slot="title">
-            Đăng xuất
-        </h5>
-        <p>Bạn thật sự muốn đăng xuất user này??</p>
-        <div slot="footer">
-            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _logout!.ToggleAsync())">No</IgbButton>
-            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large">Yes</IgbButton>
-        </div>
-    </IgbDialog>
     <div class="view-container">
         @Body
     </div>
 </div>
 
 @code {
+    private IgbDialog? _logout;
     private bool _iconVisible = false;
     private List<BoxOfficeRevenueType> financialBoxOfficeRevenue = new();
     private IgbButton? _button;
@@ -181,7 +182,6 @@
     private IgbDropdown? _dropdown;
     private IgbDropdown? _dropdown1;
     private IgbDropdown? _dropdown2;
-    private IgbDialog? _logout;
 
     public void Navigate(string path)
     {

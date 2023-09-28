@@ -1,39 +1,39 @@
-using System.Text.Json;
+using System.Net.Http.Json;
 using Govem.Models.Northwind;
 
 namespace Govem.Northwind
 {
     public class NorthwindService: INorthwindService
     {
-        private readonly IWebHostEnvironment _env;
+        private readonly HttpClient _http;
 
-        public NorthwindService(IWebHostEnvironment env)
+        public NorthwindService(HttpClient http)
         {
-            _env = env;
+            _http = http;
         }
 
         public async Task<List<EmployeesType>> GetEmployees()
         {
-            var options = new JsonSerializerOptions(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            var path = _env.WebRootPath + "/static-data/northwind-employees-type.json";
-            if (!File.Exists(path))
+            using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri("/static-data/northwind-employees-type.json", UriKind.RelativeOrAbsolute));
+            using HttpResponseMessage response = await _http.SendAsync(request).ConfigureAwait(false);
+            if (response.IsSuccessStatusCode)
             {
-                return new List<EmployeesType>();
+                return await response.Content.ReadFromJsonAsync<List<EmployeesType>>().ConfigureAwait(false);
             }
-            var data = File.ReadAllText(path);
-            return await Task.FromResult(JsonSerializer.Deserialize<List<EmployeesType>>(data, options));
+
+            return new List<EmployeesType>();
         }
 
         public async Task<List<OrdersType>> GetOrders()
         {
-            var options = new JsonSerializerOptions(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-            var path = _env.WebRootPath + "/static-data/northwind-orders-type.json";
-            if (!File.Exists(path))
+            using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri("/static-data/northwind-orders-type.json", UriKind.RelativeOrAbsolute));
+            using HttpResponseMessage response = await _http.SendAsync(request).ConfigureAwait(false);
+            if (response.IsSuccessStatusCode)
             {
-                return new List<OrdersType>();
+                return await response.Content.ReadFromJsonAsync<List<OrdersType>>().ConfigureAwait(false);
             }
-            var data = File.ReadAllText(path);
-            return await Task.FromResult(JsonSerializer.Deserialize<List<OrdersType>>(data, options));
+
+            return new List<OrdersType>();
         }
     }
 }
