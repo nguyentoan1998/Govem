@@ -1,55 +1,81 @@
-.column-layout {
+.row-layout {
     display: flex;
-    flex-direction: column;
 }
-.logins-container {
+.fund-container {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
     height: 100%;
 }
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
 .group {
+    background-color: hsla(var(--ig-gray-100));
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
+    gap: 16px;
     position: relative;
-    padding: 16px;
-    min-width: 50px;
-    min-height: 50px;
+    padding: 24px;
     flex-grow: 1;
     flex-basis: 0;
-}
-.row-layout {
-    display: flex;
 }
 .group_1 {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
+    gap: 24px;
     position: relative;
-    height: 137px;
-    min-width: 50px;
-    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
 }
 .group_2 {
-    justify-content: flex-start;
-    align-items: stretch;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
     align-content: flex-start;
-    position: relative;
-    min-width: 50px;
-    min-height: 50px;
+    gap: 24px;
 }
 .group_3 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+}
+.group_4 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between;
+    gap: 24px;
+    position: relative;
+}
+.group_5 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_6 {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
     position: relative;
-    height: 50px;
     min-width: 50px;
     min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
 }
-.h3 {
-    text-align: center;
+.h6 {
+    color: hsla(var(--ig-gray-800));
     height: max-content;
     min-width: min-content;
 }
@@ -59,28 +85,16 @@
     width: 24px;
     height: 24px;
 }
-.hyperlink {
-    color: hsla(var(--ig-info-500));
-    height: max-content;
-    min-width: min-content;
-    flex-shrink: 0;
-}
 .input {
     height: max-content;
-    min-width: min-content;
-}
-.switch {
-    width: max-content;
-    height: max-content;
+    min-width: 180px;
+    flex-shrink: 0;
 }
 .button {
-    left: 50%;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    position: absolute;
     height: max-content;
+    flex-shrink: 0;
 }
-.button::part(base) {
-    color: hsla(var(--ig-secondary-900));
-    background-color: hsla(var(--ig-secondary-100));
+.grid {
+    flex-grow: 1;
+    flex-basis: 0;
 }

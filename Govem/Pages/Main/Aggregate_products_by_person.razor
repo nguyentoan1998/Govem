@@ -1,0 +1,367 @@
+@page "/main/aggregate_products_by_person"
+@using Northwind
+@using Models.Northwind
+@inject INorthwindService northwindService
+
+<div class="row-layout aggregate-products-by-person-container">
+    <div class="column-layout group">
+        <div class="column-layout group_1">
+            <div class="row-layout group_2">
+                <h6 class="h6">
+                    Tổng hợp sản phẩm theo từng nhân viên
+                </h6>
+                <div class="row-layout group_3">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials12!.ToggleAsync())" class="button button_1" aggregate_products_by_person-scope>
+                        <span class="material-icons">
+                            add
+                        </span>
+                        <span>Thêm mới</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials12!.ToggleAsync())" class="button button_2" aggregate_products_by_person-scope>
+                        <span class="material-icons">
+                            edit_calendar
+                        </span>
+                        <span>Sửa</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials12!.ToggleAsync())" class="button button_3" aggregate_products_by_person-scope>
+                        <span class="material-icons">
+                            delete
+                        </span>
+                        <span>Xóa</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+            <div class="row-layout group_4">
+                <div class="row-layout group_5">
+                    <IgbInput Label="Search orders" Outlined="false" class="input" aggregate_products_by_person-scope>
+                        <span slot="prefix">
+                            <span class="material-icons icon">
+                                search
+                            </span>
+                        </span>
+                    </IgbInput>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button" aggregate_products_by_person-scope>
+                        <span class="material-icons">
+                            filter_alt
+                        </span>
+                        <span>Filter</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+            <div class="row-layout group_6">
+                <IgbGrid Data="northwindOrders" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" class="ig-typography grid" aggregate_products_by_person-scope>
+                    <IgbGridToolbar>
+                        <IgbGridToolbarActions>
+                            <IgbGridToolbarExporter></IgbGridToolbarExporter>
+                            <IgbGridToolbarAdvancedFiltering></IgbGridToolbarAdvancedFiltering>
+                        </IgbGridToolbarActions>
+                        <IgbGridToolbarTitle>Grid Toolbar</IgbGridToolbarTitle>
+                    </IgbGridToolbar>
+                    <IgbColumn Field="OrderID" DataType="GridColumnDataType.Number" Header="orderID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="CustomerID" DataType="GridColumnDataType.String" Header="customerID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="OrderDate" DataType="GridColumnDataType.Date" Header="orderDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="RequiredDate" DataType="GridColumnDataType.Date" Header="requiredDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShippedDate" DataType="GridColumnDataType.Date" Header="shippedDate" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipVia" DataType="GridColumnDataType.Number" Header="shipVia" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="Freight" DataType="GridColumnDataType.Number" Header="freight" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipName" DataType="GridColumnDataType.String" Header="shipName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Street" DataType="GridColumnDataType.String" Header="street" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.City" DataType="GridColumnDataType.String" Header="city" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Region" DataType="GridColumnDataType.String" Header="region" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.PostalCode" DataType="GridColumnDataType.String" Header="postalCode" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbColumn Field="ShipAddress.Country" DataType="GridColumnDataType.String" Header="country" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                    <IgbPaginator>true</IgbPaginator>
+                </IgbGrid>
+            </div>
+        </div>
+    </div>
+    <IgbDialog KeepOpenOnEscape="true" @ref="_addMaterials12">
+        <h5 slot="title">
+            Thêm mới 
+        </h5>
+        <div class="row-layout group_7">
+            <div class="column-layout group_8">
+                <div class="column-layout group_9">
+                    <div class="row-layout group_10">
+                        <IgbInput Label="Mã" Required="true" Outlined="false" class="input_1" aggregate_products_by_person-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Tên" Required="true" Outlined="false" class="input_2" aggregate_products_by_person-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <span class="textarea">Textarea not yet available in Blazor</span>
+                </div>
+                <IgbTabs Alignment="TabsAlignment.Justify" class="tabs" aggregate_products_by_person-scope>
+                    <IgbTab Selected="true">
+                        <span>Khoan cắt</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Đột dập</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Hàn</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Đánh bóng</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Lắp ráp</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Khác</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                </IgbTabs>
+                <div class="row-layout group_11">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _addMaterials12!.ToggleAsync())" class="button button_4" aggregate_products_by_person-scope>
+                        <span class="material-icons">
+                            close
+                        </span>
+                        <span>Thoát</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_5" aggregate_products_by_person-scope>
+                        <span class="material-icons">
+                            save
+                        </span>
+                        <span>Lưu</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+        </div>
+        <div slot="footer"></div>
+    </IgbDialog>
+    <IgbDialog KeepOpenOnEscape="true" @ref="_editMaterials12">
+        <h5 slot="title">
+            Thêm mới 
+        </h5>
+        <div class="row-layout group_7">
+            <div class="column-layout group_8">
+                <div class="column-layout group_9">
+                    <div class="row-layout group_10">
+                        <IgbInput Label="Mã" Disabled="true" Required="true" Outlined="false" class="input_1" aggregate_products_by_person-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                        <IgbInput Label="Tên" Required="true" Outlined="false" class="input_2" aggregate_products_by_person-scope>
+                            <span slot="prefix">
+                                <span class="material-icons icon">
+                                    person
+                                </span>
+                            </span>
+                            <span slot="suffix">
+                                <span class="material-icons icon">
+                                    clear
+                                </span>
+                            </span>
+                        </IgbInput>
+                    </div>
+                    <span class="textarea">Textarea not yet available in Blazor</span>
+                </div>
+                <IgbTabs Alignment="TabsAlignment.Justify" class="tabs" aggregate_products_by_person-scope>
+                    <IgbTab Selected="true">
+                        <span>Khoan cắt</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Đột dập</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Hàn</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Đánh bóng</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Lắp ráp</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                    <IgbTab>
+                        <span>Khác</span>
+                    </IgbTab>
+                    <IgbTabPanel class="row-layout tab-item-content" aggregate_products_by_person-scope>
+                        <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="930px" class="ig-typography grid_1" aggregate_products_by_person-scope>
+                            <IgbColumn Field="EmployeeID" DataType="GridColumnDataType.Number" Header="employeeID" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                            <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Width="300px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
+                        </IgbGrid>
+                    </IgbTabPanel>
+                </IgbTabs>
+                <div class="row-layout group_11">
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" @onclick="@(e => _editMaterials12!.ToggleAsync())" class="button button_6" aggregate_products_by_person-scope>
+                        <span class="material-icons">
+                            close
+                        </span>
+                        <span>Thoát</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                    <IgbButton Variant="ButtonVariant.Outlined" Size="SizableComponentSize.Large" class="button button_7" aggregate_products_by_person-scope>
+                        <span class="material-icons">
+                            save
+                        </span>
+                        <span>Lưu</span>
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+            </div>
+        </div>
+        <div slot="footer"></div>
+    </IgbDialog>
+    <IgbDialog CloseOnOutsideClick="true" KeepOpenOnEscape="false" @ref="_deleteMaterials12">
+        <h5 slot="title">
+            Xóa
+        </h5>
+        <p>Bạn muốn xóa nó??</p>
+        <div slot="footer">
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials12!.ToggleAsync())">Cancel</IgbButton>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _deleteMaterials12!.ToggleAsync())">OK</IgbButton>
+        </div>
+    </IgbDialog>
+</div>
+
+@code {
+    private List<OrdersType> northwindOrders = new();
+    private IgbDialog? _addMaterials12;
+    private List<EmployeesType> northwindEmployees = new();
+    private IgbDialog? _editMaterials12;
+    private IgbDialog? _deleteMaterials12;
+
+    protected override async Task OnInitializedAsync()
+    {
+        northwindOrders = await northwindService.GetOrders();
+        northwindEmployees = await northwindService.GetEmployees();
+
+        await base.OnInitializedAsync();
+    }
+}

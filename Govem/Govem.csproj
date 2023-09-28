@@ -25,6 +25,11 @@
     <None Update="Pages/Main/Warehouse.razor.css" CssScope="warehouse-scope" />
     <None Update="Pages/Main/Roles.razor.css" CssScope="roles-scope" />
     <None Update="Pages/Main/Users.razor.css" CssScope="users-scope" />
+    <None Update="Pages/Main/Fund.razor.css" CssScope="fund-scope" />
+    <None Update="Pages/Main/Salary.razor.css" CssScope="salary-scope" />
+    <None Update="Pages/Main/Timesheets.razor.css" CssScope="timesheets-scope" />
+    <None Update="Pages/Main/Product_synthesis.razor.css" CssScope="product_synthesis-scope" />
+    <None Update="Pages/Main/Aggregate_products_by_person.razor.css" CssScope="aggregate_products_by_person-scope" />
     <None Update="Shared/Login.razor.css" CssScope="login-scope" />
     <None Update="Pages/Login/Logins.razor.css" CssScope="logins-scope" />
   </ItemGroup>
