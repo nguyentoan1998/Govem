@@ -187,19 +187,9 @@
                 <div class="row-layout group_7">
                     <IgbTabs class="tabs" materials-scope>
                         <IgbTab Selected="true">
-                            <span slot="prefix">
-                                <span class="material-icons icon">
-                                    info
-                                </span>
-                            </span>
                             <p class="typography__body-1 text">
                                 Đặc tính, hình ảnh
                             </p>
-                            <span slot="suffix">
-                                <span class="material-icons icon">
-                                    clear
-                                </span>
-                            </span>
                         </IgbTab>
                         <IgbTabPanel class="row-layout tab-item-content" materials-scope>
                             <div class="column-layout group_12">
@@ -219,7 +209,11 @@
                                 </div>
                             </div>
                         </IgbTabPanel>
-                        <IgbTab></IgbTab>
+                        <IgbTab>
+                            <p class="typography__body-1 text_1">
+                                Đơn vị chuyển đổi
+                            </p>
+                        </IgbTab>
                         <IgbTabPanel class="row-layout tab-item-content" materials-scope>
                             <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="950px" class="ig-typography grid_1" materials-scope>
                                 <IgbColumn Field="Title" DataType="GridColumnDataType.String" Header="STT" Width="50px" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>
@@ -233,7 +227,11 @@
                                 </IgbActionStrip>
                             </IgbGrid>
                         </IgbTabPanel>
-                        <IgbTab></IgbTab>
+                        <IgbTab>
+                            <p class="typography__body-1 text">
+                                Mã quy cách
+                            </p>
+                        </IgbTab>
                         <IgbTabPanel class="row-layout tab-item-content" materials-scope>
                             <IgbGrid Data="northwindEmployees" PrimaryKey="EmployeeID" DisplayDensity="DisplayDensity.Cosy" RowSelection="GridSelectionMode.Single" RowEditable="true" AllowFiltering="true" FilterMode="FilterMode.ExcelStyleFilter" AutoGenerate="false" Width="950px" class="ig-typography grid_1" materials-scope>
                                 <IgbColumn Field="LastName" DataType="GridColumnDataType.String" Header="lastName" Sortable="true" Resizable="true" Selectable="false"></IgbColumn>

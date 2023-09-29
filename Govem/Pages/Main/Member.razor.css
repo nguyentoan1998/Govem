@@ -32,6 +32,7 @@
     align-content: flex-start;
     gap: 24px;
     position: relative;
+    min-height: 50px;
 }
 .group_2 {
     flex-wrap: wrap;
@@ -42,6 +43,14 @@
     position: relative;
 }
 .group_3 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+}
+.group_4 {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: stretch;
@@ -66,7 +75,7 @@
     flex-grow: 1;
     flex-basis: 0;
 }
-.group_4 {
+.group_5 {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
@@ -74,7 +83,7 @@
     min-width: 50px;
     min-height: 50px;
 }
-.group_5 {
+.group_6 {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
@@ -83,22 +92,12 @@
     min-width: 50px;
     min-height: 50px;
 }
-.group_6 {
+.group_7 {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;
     gap: 24px;
     position: relative;
-    min-width: 50px;
-    min-height: 50px;
-}
-.group_7 {
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: flex-start;
-    gap: 16px;
-    position: relative;
-    width: 946px;
     min-width: 50px;
     min-height: 50px;
 }
@@ -108,10 +107,20 @@
     align-content: flex-start;
     gap: 16px;
     position: relative;
+    width: 946px;
     min-width: 50px;
     min-height: 50px;
 }
 .group_9 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_10 {
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: stretch;
@@ -120,7 +129,7 @@
     width: 900px;
     min-width: 50px;
 }
-.group_10 {
+.group_11 {
     justify-content: flex-start;
     align-items: stretch;
     align-content: flex-start;

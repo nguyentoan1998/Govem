@@ -37,6 +37,7 @@
     align-items: center;
     align-content: flex-start;
     gap: 24px;
+    min-height: 50px;
 }
 .group_3 {
     flex-wrap: wrap;

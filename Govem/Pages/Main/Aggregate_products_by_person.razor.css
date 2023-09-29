@@ -37,6 +37,7 @@
     align-items: center;
     align-content: flex-start;
     gap: 24px;
+    min-height: 50px;
 }
 .group_3 {
     flex-wrap: wrap;
@@ -151,12 +152,36 @@
     min-height: 50px;
 }
 .button {
+    z-index: 1;
+    right: 230px;
+    left: 1069.9843320741759px;
+    top: 28.000005365728022px;
+    position: fixed;
     height: max-content;
-    flex-shrink: 0;
+}
+.button_1 {
+    z-index: 1;
+    right: 120px;
+    left: 1218.2342462225274px;
+    top: 28.000005365728022px;
+    position: fixed;
+    height: max-content;
+}
+.button_2 {
+    z-index: 1;
+    right: 50px;
+    left: 1323.999989268544px;
+    top: 28.000005365728022px;
+    position: fixed;
+    height: max-content;
 }
 .input {
     height: max-content;
     min-width: 180px;
+    flex-shrink: 0;
+}
+.button_3 {
+    height: max-content;
     flex-shrink: 0;
 }
 .input_1 {
@@ -169,31 +194,31 @@
     height: max-content;
     min-width: min-content;
 }
-.button_1::part(base) {
-    color: hsla(var(--ig-secondary-900));
-    background-color: hsla(var(--ig-secondary-100));
-}
-.button_2::part(base) {
-    color: hsla(var(--ig-secondary-900));
-    background-color: hsla(var(--ig-secondary-100));
-}
-.button_3::part(base) {
-    color: hsla(var(--ig-secondary-900));
-    background-color: hsla(var(--ig-secondary-100));
-}
 .button_4::part(base) {
     color: hsla(var(--ig-secondary-900));
-    background-color: hsla(var(--ig-gray-100));
+    background-color: hsla(var(--ig-secondary-100));
 }
-.button_5::part(base) {
+.button_1_1::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_2_1::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_3_1::part(base) {
     color: hsla(var(--ig-secondary-900));
     background-color: hsla(var(--ig-gray-100));
 }
-.button_6::part(base) {
+.button_3_2::part(base) {
     color: hsla(var(--ig-secondary-900));
     background-color: hsla(var(--ig-gray-100));
 }
-.button_7::part(base) {
+.button_3_3::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_3_4::part(base) {
     color: hsla(var(--ig-secondary-900));
     background-color: hsla(var(--ig-gray-100));
 }
