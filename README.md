@@ -22,15 +22,15 @@ NOTE: Running the app requires [.NET 6.0](https://dotnet.microsoft.com/en-us/dow
 ```dotnet run```
 
 - wait for message:
-**Now listening on: https://localhost:7228 and http://localhost:5072**
+**Now listening on: https://localhost:5000 and http://localhost:5001**
 
-- open **https://localhost:7228 OR http://localhost:5072** in your browser
+- open **https://localhost:5000 OR http://localhost:5001** in your browser
 
   _Ports are configured by "applicationUrl" specified in launch.Settings.json file and could be subject to change._
 
 
 ## Resources
 
-- [Documentation and Samples](https://www.infragistics.com/products/ignite-ui-blazor/blazor/components/general-getting-started-blazor-client)
+- [Documentation and Samples](https://www.infragistics.com/products/ignite-ui-blazor/blazor/components/general-getting-started)
 - [Infragistics NuGet Feed](https://www.infragistics.com/products/ignite-ui-blazor/blazor/components/general-nuget-feed)
 - [Razor Syntax](https://docs.microsoft.com/en-us/aspnet/core/blazor/components/?view=aspnetcore-6.0#razor-syntax)

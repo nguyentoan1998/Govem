@@ -99,19 +99,19 @@
         <div class="row-layout group_1">
             <h6 class="h6">
             </h6>
-            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropdown!.ToggleAsync(_button))" @ref="_button" class="button button_1" main-scope>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _droptep!.ToggleAsync(_button))" @ref="_button" class="button button_1" main-scope>
                 Tệp
                 <IgbRipple></IgbRipple>
             </IgbButton>
-            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropdown1!.ToggleAsync(_button1))" @ref="_button1" class="button button_2" main-scope>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropDM!.ToggleAsync(_button1))" @ref="_button1" class="button button_2" main-scope>
                 Danh mục
                 <IgbRipple></IgbRipple>
             </IgbButton>
-            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropdown2!.ToggleAsync(_button2))" @ref="_button2" class="button button_3" main-scope>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropHT!.ToggleAsync(_button2))" @ref="_button2" class="button button_3" main-scope>
                 Hệ thống
                 <IgbRipple></IgbRipple>
             </IgbButton>
-            <IgbDropdown @ref="_dropdown" class="dropdown" main-scope>
+            <IgbDropdown @ref="_droptep" class="droptep" main-scope>
                 <IgbDropdownItem>
                     Nhập dữ liệu
                 </IgbDropdownItem>
@@ -122,7 +122,7 @@
                     Đăng xuất
                 </IgbDropdownItem>
             </IgbDropdown>
-            <IgbDropdown @ref="_dropdown1" class="dropdown" main-scope>
+            <IgbDropdown @ref="_dropDM" class="droptep" main-scope>
                 <IgbDropdownItem>
                     Tài khoản
                 </IgbDropdownItem>
@@ -157,7 +157,7 @@
                     Nhập số dư ban đầu
                 </IgbDropdownItem>
             </IgbDropdown>
-            <IgbDropdown @ref="_dropdown2" class="dropdown" main-scope>
+            <IgbDropdown @ref="_dropHT" class="droptep" main-scope>
                 <IgbDropdownItem @onclick="@(e => Navigate("main/roles"))">
                     Vai trò, quyền hạn
                 </IgbDropdownItem>
@@ -179,9 +179,9 @@
     private IgbButton? _button;
     private IgbButton? _button1;
     private IgbButton? _button2;
-    private IgbDropdown? _dropdown;
-    private IgbDropdown? _dropdown1;
-    private IgbDropdown? _dropdown2;
+    private IgbDropdown? _droptep;
+    private IgbDropdown? _dropDM;
+    private IgbDropdown? _dropHT;
 
     public void Navigate(string path)
     {

@@ -34,14 +34,14 @@
                     </span>
                 </IgbInput>
             </div>
-            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropdown3!.ToggleAsync(_button3))" @ref="_button3" class="button" member-scope>
+            <IgbButton Variant="ButtonVariant.Flat" Size="SizableComponentSize.Large" @onclick="@(e => _dropdown!.ToggleAsync(_button3))" @ref="_button3" class="button" member-scope>
                 <span>Sắp xếp</span>
                 <span class="material-icons">
                     keyboard_arrow_down
                 </span>
                 <IgbRipple></IgbRipple>
             </IgbButton>
-            <IgbDropdown @ref="_dropdown3" class="dropdown" member-scope>
+            <IgbDropdown @ref="_dropdown" class="dropdown" member-scope>
                 <IgbDropdownItem>
                     Theo tên
                 </IgbDropdownItem>
@@ -550,7 +550,7 @@
 
 @code {
     private IgbButton? _button3;
-    private IgbDropdown? _dropdown3;
+    private IgbDropdown? _dropdown;
     private IgbDialog? _addMember;
     private List<EmployeesType> northwindEmployees = new();
     private IgbDialog? _editMember;

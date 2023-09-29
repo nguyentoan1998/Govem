@@ -1,39 +1,39 @@
-using System.Net.Http.Json;
+using System.Text.Json;
 using Govem.Models.Northwind;
 
 namespace Govem.Northwind
 {
     public class NorthwindService: INorthwindService
     {
-        private readonly HttpClient _http;
+        private readonly IWebHostEnvironment _env;
 
-        public NorthwindService(HttpClient http)
+        public NorthwindService(IWebHostEnvironment env)
         {
-            _http = http;
+            _env = env;
         }
 
         public async Task<List<EmployeesType>> GetEmployees()
         {
-            using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri("/static-data/northwind-employees-type.json", UriKind.RelativeOrAbsolute));
-            using HttpResponseMessage response = await _http.SendAsync(request).ConfigureAwait(false);
-            if (response.IsSuccessStatusCode)
+            var options = new JsonSerializerOptions(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            var path = _env.WebRootPath + "/static-data/northwind-employees-type.json";
+            if (!File.Exists(path))
             {
-                return await response.Content.ReadFromJsonAsync<List<EmployeesType>>().ConfigureAwait(false);
+                return new List<EmployeesType>();
             }
-
-            return new List<EmployeesType>();
+            var data = File.ReadAllText(path);
+            return await Task.FromResult(JsonSerializer.Deserialize<List<EmployeesType>>(data, options));
         }
 
         public async Task<List<OrdersType>> GetOrders()
         {
-            using HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri("/static-data/northwind-orders-type.json", UriKind.RelativeOrAbsolute));
-            using HttpResponseMessage response = await _http.SendAsync(request).ConfigureAwait(false);
-            if (response.IsSuccessStatusCode)
+            var options = new JsonSerializerOptions(new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            var path = _env.WebRootPath + "/static-data/northwind-orders-type.json";
+            if (!File.Exists(path))
             {
-                return await response.Content.ReadFromJsonAsync<List<OrdersType>>().ConfigureAwait(false);
+                return new List<OrdersType>();
             }
-
-            return new List<OrdersType>();
+            var data = File.ReadAllText(path);
+            return await Task.FromResult(JsonSerializer.Deserialize<List<OrdersType>>(data, options));
         }
     }
 }
