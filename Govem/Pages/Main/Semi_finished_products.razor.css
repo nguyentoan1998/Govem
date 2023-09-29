@@ -1,0 +1,307 @@
+.row-layout {
+    display: flex;
+}
+.semi-finished-products-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.group {
+    background-color: hsla(var(--ig-gray-100));
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    padding: 24px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_1 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_2 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 24px;
+    min-height: 50px;
+}
+.group_3 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+}
+.group_4 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between;
+    gap: 24px;
+    position: relative;
+}
+.group_5 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_6 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_7 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_8 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_9 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    width: 924px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_10 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    width: 921px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_11 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.tabs {
+    min-width: 0;
+    min-height: 0;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_12 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    width: 544px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_13 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    width: 349px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_14 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    align-self: flex-end;
+}
+.h6 {
+    color: hsla(var(--ig-gray-800));
+    height: max-content;
+    min-width: min-content;
+}
+.icon {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.text {
+    height: max-content;
+    min-width: min-content;
+}
+.image {
+    object-fit: fill;
+    width: 200px;
+    height: 200px;
+    min-width: 0;
+    min-height: 0;
+    align-self: center;
+}
+.text_1 {
+    width: 950px;
+    height: max-content;
+    min-width: min-content;
+}
+.textarea {
+    width: 922px;
+    height: max-content;
+    min-width: min-content;
+}
+.tab-item-content {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    overflow: auto;
+    height: 100%;
+    min-width: 100%;
+    min-height: 50px;
+}
+.textarea_1 {
+    height: max-content;
+    min-width: min-content;
+}
+.button {
+    height: max-content;
+    flex-shrink: 0;
+}
+.input {
+    height: max-content;
+    min-width: 180px;
+    flex-shrink: 0;
+}
+.input_1 {
+    width: 300px;
+    height: max-content;
+    min-width: min-content;
+}
+.input_2 {
+    width: 600px;
+    height: max-content;
+    min-width: min-content;
+}
+.select {
+    width: 313px;
+    height: max-content;
+    min-width: min-content;
+}
+.select_1 {
+    width: 287px;
+    height: max-content;
+    min-width: min-content;
+}
+.input_3 {
+    width: 306px;
+    height: max-content;
+    min-width: min-content;
+    flex-shrink: 0;
+}
+.select_2 {
+    height: max-content;
+    min-width: min-content;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.input_4 {
+    height: max-content;
+    min-width: min-content;
+    flex-shrink: 0;
+}
+.input_5 {
+    height: max-content;
+    min-width: min-content;
+}
+.button_1 {
+    width: 375.421880906628px;
+    height: max-content;
+    align-self: center;
+}
+.button_2::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_3::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_4::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_5::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_6::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_7::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_8::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_1_1::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-primary-100));
+}
+.button_1_2::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-primary-100));
+}
+.grid {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.grid_1 {
+    min-width: 600px;
+    min-height: 300px;
+}
+.grid_2 {
+    min-width: 600px;
+    min-height: 300px;
+    flex-grow: 1;
+    flex-basis: 0;
+}

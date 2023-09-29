@@ -1,0 +1,276 @@
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.member-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    overflow: auto;
+    height: 100%;
+}
+.group {
+    background-color: hsla(var(--ig-gray-100));
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    padding: 24px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.row-layout {
+    display: flex;
+}
+.group_1 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    min-height: 50px;
+}
+.group_2 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+}
+.group_3 {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+}
+.group_4 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+}
+.products {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    flex-shrink: 0;
+}
+.card {
+    height: max-content;
+    min-width: 240px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_5 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_6 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    width: 332px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_7 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 24px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_8 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    width: 946px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_9 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_10 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    width: 900px;
+    min-width: 50px;
+}
+.group_11 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    align-self: flex-end;
+}
+.h6 {
+    color: hsla(var(--ig-gray-800));
+    height: max-content;
+    min-width: min-content;
+}
+.icon {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.image {
+    height: 100%;
+}
+.content {
+    height: max-content;
+    min-width: min-content;
+}
+.image_1 {
+    object-fit: cover;
+    top: 200px;
+    position: relative;
+    min-width: 0;
+    min-height: 300px;
+}
+.media-content {
+    height: 250px;
+}
+.body-content {
+    min-width: 50px;
+    min-height: 50px;
+}
+.actions-content {
+    min-width: 50px;
+    min-height: 40px;
+}
+.icon-button::part(base) {
+    color: hsla(var(--ig-primary-500));
+}
+.textarea {
+    width: 900px;
+    height: max-content;
+    min-width: min-content;
+}
+.button {
+    height: max-content;
+    flex-shrink: 0;
+}
+.input {
+    height: max-content;
+    min-width: 240px;
+    max-width: 290px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.dropdown {
+    left: 0;
+    top: 0;
+    position: absolute;
+    min-width: min-content;
+}
+.button_1 {
+    margin: 0 0 8px 8px;
+    height: max-content;
+}
+.user-input {
+    width: 300px;
+    height: max-content;
+    min-width: min-content;
+}
+.input_2 {
+    width: 400px;
+    height: max-content;
+    min-width: min-content;
+}
+.date-picker {
+    width: 200px;
+    height: max-content;
+    min-width: 120px;
+    flex-shrink: 0;
+}
+.select {
+    height: max-content;
+    min-width: min-content;
+}
+.single-select-combo {
+    height: max-content;
+    min-width: 120px;
+    max-width: 240px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.input_3 {
+    width: 300px;
+    height: max-content;
+    min-width: min-content;
+    flex-shrink: 0;
+}
+.button_2 {
+    height: max-content;
+}
+.single-select-combo_1 {
+    width: 300px;
+    height: max-content;
+    min-width: 120px;
+    max-width: 240px;
+}
+.button_3::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_4::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_5::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-gray-100));
+}
+.button_6::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.button_7::part(base) {
+    color: hsla(var(--ig-secondary-900));
+    background-color: hsla(var(--ig-secondary-100));
+}
+.dropdown::part(base) {
+    height: max-content;
+}
+.grid {
+    min-width: 600px;
+    min-height: 300px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
