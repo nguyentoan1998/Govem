@@ -80,13 +80,13 @@
             </IgbTreeItem>
             <IgbTreeItem Label="Tiền lương" @onclick="@(e => Navigate("main/salary"))">
                 <IgbTreeItem Label="Bảng chấm công" @onclick="@(e => Navigate("main/timesheets"))"></IgbTreeItem>
-                <IgbTreeItem Label="Tổng hợp sản phẩm"></IgbTreeItem>
+                <IgbTreeItem Label="Tổng hợp sản phẩm" @onclick="@(e => Navigate("main/product_synthesis"))"></IgbTreeItem>
                 <IgbTreeItem Label="Tổng hợp sản phẩm theo người">
-                    <IgbTreeItem Label="Khoan cắt"></IgbTreeItem>
-                    <IgbTreeItem Label="Đột dập"></IgbTreeItem>
-                    <IgbTreeItem Label="Hàn"></IgbTreeItem>
-                    <IgbTreeItem Label="Đánh bóng"></IgbTreeItem>
-                    <IgbTreeItem Label="Lắp ráp"></IgbTreeItem>
+                    <IgbTreeItem Label="Khoan cắt" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
+                    <IgbTreeItem Label="Đột dập" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
+                    <IgbTreeItem Label="Hàn" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
+                    <IgbTreeItem Label="Đánh bóng" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
+                    <IgbTreeItem Label="Lắp ráp" @onclick="@(e => Navigate("main/aggregate_products_by_person"))"></IgbTreeItem>
                 </IgbTreeItem>
                 <IgbTreeItem Label="Tính lương"></IgbTreeItem>
                 <IgbTreeItem Label="Trả lương"></IgbTreeItem>
